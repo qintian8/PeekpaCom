@@ -1,18 +1,21 @@
-version: '2'
+version: '3'
 services:
   db:
-    image: mysql:5.7.4
+    image: mysql:5.7
+    ports:
+      - "127.0.0.1:3307:3306"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4;' --innodb-flush-log-at-trx-commit=0
+    environment:
+      - MYSQL_DATABASE=peekpa_db1
+      - MYSQL_USER=peekpa
+      - MYSQL_ROOT_PASSWORD=Peekpa2020
+      - MYSQL_PASSWORD=Peekpa2020
+      - TZ='Asia/Shanghai'
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     expose:
       - "3306"
     volumes:
       - ./db:/var/lib/mysql
-    ports:
-      - "127.0.0.1:3307:3306"
-    environment:
-      - MYSQL_DATABASE=peekpa_db1
-      - MYSQL_USER=root
-      - MYSQL_ROOT_PASSWORD=Peekpa2020
-      - MYSQL_PASSWORD=Peekpa2020
 
   web:
     build: .

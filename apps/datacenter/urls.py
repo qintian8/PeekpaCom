@@ -3,6 +3,9 @@ from . import views
 from .jpearth_view import JpEarthView, JpEarthSendView
 from .center_api_view import CenterApiView
 from .center_view import CenterView
+from .caoliu_view import CaoliuListView
+from .javpop_view import JavPopView
+from .avgle_view import AvgleView, AvgleIndexView
 
 app_name = "center"
 
@@ -20,4 +23,8 @@ urlpatterns = [
 
     #第十一讲的Token验证
     path('api/center/data/', CenterApiView.as_view(), name="jpearth_api_view"),
+
+    path("cl1024/", CaoliuListView.as_view(), name="caoliu_list_view"),
+    path("javpop/", JavPopView.as_view(), name="javpop_view"),
+    path("avgle/", AvgleView.as_view(), name="avgle_view"),
 ]

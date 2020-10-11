@@ -119,7 +119,7 @@ DATABASES = {
         # 数据库的名字
         'NAME': 'peekpa_db1',
         # 连接mysql数据库的用户名
-        'USER': 'root',
+        'USER': 'peekpa',
         # 连接mysql数据库的密码
         'PASSWORD': 'Peekpa2020',
         # mysql数据库的主机地址
