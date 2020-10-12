@@ -1,4 +1,5 @@
 import datetime
+import ssl
 
 import pymongo
 
@@ -36,7 +37,9 @@ def handle_side_bar_data():
 def get_caoliu_post_update():
     today_day_time = datetime.datetime.now().strftime("%Y-%m-%d")
     yesterday_day_time = (datetime.datetime.now() - datetime.timedelta(1)).strftime('%Y-%m-%d')
-    database = pymongo.MongoClient(settings.MONGODB_CAOLIU["host"], settings.MONGODB_CAOLIU["port"])['SpiderReport']
+    database = pymongo.MongoClient(
+        "mongodb+srv://peekpa-user:peekpa2020@peekpa.ofyco.mongodb.net/Peekpa?retryWrites=true&w=majority",
+        ssl_cert_reqs=ssl.CERT_NONE)['SpiderReport']
     collection = database['caoliu']
     yesterday_collection_list = list(collection.find({'day_time': yesterday_day_time}))
     today_collection_list = list(collection.find({'day_time': today_day_time}))
@@ -66,7 +69,9 @@ def get_caoliu_post_update():
 def get_jav_post_update():
     today_day_time = datetime.datetime.now().strftime("%Y-%m-%d")
     yesterday_day_time = (datetime.datetime.now() - datetime.timedelta(1)).strftime('%Y-%m-%d')
-    database = pymongo.MongoClient(settings.MONGODB_CAOLIU["host"], settings.MONGODB_CAOLIU["port"])['SpiderReport']
+    database =  pymongo.MongoClient(
+        "mongodb+srv://peekpa-user:peekpa2020@peekpa.ofyco.mongodb.net/Peekpa?retryWrites=true&w=majority",
+        ssl_cert_reqs=ssl.CERT_NONE)['SpiderReport']
     collection = database['javpop']
     yesterday_collection_list = list(collection.find({'day_time': yesterday_day_time}))
     today_collection_list = list(collection.find({'day_time': today_day_time}))

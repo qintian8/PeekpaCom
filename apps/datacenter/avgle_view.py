@@ -22,7 +22,6 @@ class AvgleView(View):
         return render(request, 'datacenter/video/manage.html', context=context)
 
 
-@method_decorator(peekpa_url_check, name='get')
 @method_decorator(peekpa_tracking, name='get')
 class AvgleIndexView(View):
     TYPE_DAILY = 1

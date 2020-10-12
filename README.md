@@ -10,34 +10,30 @@
 $ git clone https://github.com/SwyftG/PeekpaCom.git
 ```
 
-### 查看文章配对代码
+### 【重要】怎样启动
 
-查看此代码的Tag地址：
+如何在本地成功启动本地版的Peekpa.com，前提条件，需要在本地计算机安装docker和docker-compose。
 
-https://github.com/SwyftG/PeekpaCom/tags
+[《如何安装docker》请看这里官方文档](https://docs.docker.com/get-docker/)
 
-这里面，Tag格式均以`Post_xxx`来命名。`xxx`为文章对应的编号，比如，文章《用Django全栈开发——26. 开发Dashboard功能展示页面》对应的代码，是Tag为`Post_026`下面的代码。
-
-如果你想查看某个标签所指向的文件版本，可以使用 `git checkout` 命令:
+当安装完docker之后，在终端进入到目录下面，首先切换到`for_docker_image`:
 
 ```shell
-$ git checkout <Tag名称>
-
-### 例如，查看文章《用Django全栈开发——26. 开发Dashboard功能展示页面》对应的代码
-$ git checkout Post_026
+$ git checkout for_docker_image   #切换到remotes/origin/for_docker_image分支
 ```
 
-### 环境配置
-
-首先需要Python3，然后使用以下命令安装项目依赖：
+然后直接通过`docker-compose up`命令启动：
 
 ```shell
-$ pip install -r requirement.txt
+$ docker-compose up   # 本地化启动peekpa.com
 ```
 
-然后，本地需要安装MySQL服务，并且在`Peekpa/settings.py`文件中，配置`DATABASES`变量信息。
+停止运行，则需要输入`docker-compose down`命令：
 
-或者自己参考网上资料，更换掉系统的`DATABASES`变量。
+```shell
+$ docker-compose down   # 停止本地化peekpa.com运行
+```
+
 
 ### 阿里云线上部署
 
